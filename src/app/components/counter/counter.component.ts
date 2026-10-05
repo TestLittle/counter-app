@@ -1,11 +1,21 @@
 import { Component, input, output } from '@angular/core';
 import { SavedCounter } from '../../models/saved-counter';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonInput } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss'],
-  imports: [],
+  imports: [
+    FormsModule,
+    IonButton,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonInput
+  ],
 })
 export class CounterComponent{
   readonly heading = input('Nové počítadlo');
