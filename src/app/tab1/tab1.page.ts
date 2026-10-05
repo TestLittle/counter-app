@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CounterComponent } from '../components/counter/counter.component';
 import { SavedCounter } from '../models/saved-counter';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonLabel, IonItem, IonNote } from '@ionic/angular';
+import { CounterService } from '../services/counter.service';
 
 @Component({
   selector: 'app-tab1',
@@ -11,9 +12,9 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, Io
 })
 
 export class Tab1Page {
-  savedCounters: SavedCounter[] = [];
+  private readonly counterService = inject(CounterService);
 
-  onSaved(counter: SavedCounter): void{
-    this.savedCounters.unshift(counter);
+  async onSaved(counter: SavedCounter):Promise<void>{
+    await this.counterService.add(counter);
   }
 }
