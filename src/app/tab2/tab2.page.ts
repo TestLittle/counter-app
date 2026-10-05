@@ -9,7 +9,7 @@ import { CounterService } from '../services/counter.service';
   styleUrls: ['tab2.page.scss'],
   imports: [DatePipe, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonSpinner, IonItem, IonLabel, IonNote, IonList]
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
   readonly counterService = inject(CounterService);
 
   async ngOnInit(): Promise<void>{
