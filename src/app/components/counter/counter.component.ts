@@ -49,6 +49,7 @@ export class CounterComponent{
       id: crypto.randomUUID(),
       name,
       value: this.count,
+      createdAt: new Date().toISOString(),
     });
 
     this.counterName = '';
