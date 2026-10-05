@@ -17,13 +17,22 @@
 - [X] Příkaz `ionic build` skončí bez chyby.
 - [X] Změny jsou uloženy v lokálním Git commitu.
 
-## 17. Bonusové úkoly
+# CV3 – Znovupoužitelná komponenta a komunikace mezi komponentami
 
-Po dokončení povinné části můžete:
+## 17. Kontrolní seznam CV3
 
-1. přidat tlačítka `+5` a `−5`,
-2. přidat vlastnost `step` a vstup pro velikost kroku,
-3. barevně odlišit nulovou a kladnou hodnotu,
-4. doplnit tlačítko, které vymaže současně hodnotu i název.
-
-Bonus nesmí porušit pravidlo, že hodnota nemůže klesnout pod nulu.
+- [X] Pracuji ve větvi `cv3/reusable-counter`.
+- [X] `CounterComponent` byla vytvořena Angular generátorem.
+- [X] Datový model `SavedCounter` je v samostatném souboru.
+- [X] Počítadlo používá moderní `input()` a `output()`.
+- [X] `Tab1Page` neobsahuje logiku zvyšování a snižování hodnoty.
+- [X] Rodič předává potomkovi nadpis přes input.
+- [X] Potomek odesílá rodiči typovaný objekt přes output.
+- [X] Seznam používá `@if`, `@for` a `track counter.id`.
+- [X] Lze uložit více počítadel a nejnovější je první.
+- [X] Testy logiky počítadla jsou v `counter.component.spec.ts`.
+- [X] Test komponenty ověřuje také validaci názvu a událost `saved`.
+- [X] `tab1.page.spec.ts` testuje pouze odpovědnost rodičovské stránky.
+- [X] `npm test -- --watch=false` skončí bez chyby.
+- [X] Příkaz `ionic build` skončí bez chyby.
+- [X] Výsledek je uložený v Git commitu.
