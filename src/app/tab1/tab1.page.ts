@@ -1,28 +1,19 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { IonButton, IonContent, IonHeader, IonInput, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular';
+import { CounterComponent } from '../components/counter/counter.component';
+import { SavedCounter } from '../models/saved-counter';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonLabel, IonItem, IonNote } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonInput, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardContent],
+  imports: [CounterComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonListHeader, IonLabel, IonItem, IonNote],
 })
+
 export class Tab1Page {
-  count = 0;
-  counterName = '';
+  savedCounters: SavedCounter[] = [];
 
-  increment(): void{
-    this.count++;
-  }
-
-  decrement(): void{
-    if(this.count > 0){
-      this.count--;
-    }
-  }
-
-  reset(): void {
-    this.count = 0;
+  onSaved(counter: SavedCounter): void{
+    this.savedCounters.unshift(counter);
   }
 }
