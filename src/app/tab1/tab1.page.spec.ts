@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it} from 'vitest';
 import { Tab1Page } from './tab1.page';
+import { SavedCounter } from '../models/saved-counter';
 
 describe('Tab1Page', () => {
   let component: Tab1Page;
@@ -15,29 +16,21 @@ describe('Tab1Page', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-/*
-  it('should increment the counter', () => {
-    component.increment();
-    expect(component.count).toBe(1);
+
+  it('should add the newest saved counter to the beginning', () => {
+    const first: SavedCounter = {
+      id: 'first',
+      name: 'První',
+      value: 1,
+    };
+    const second: SavedCounter = {
+      id: 'second',
+      name: 'Druhý',
+      value: 2,
+    };
+
+    component.onSaved(first);
+    component.onSaved(second);
+    expect(component.savedCounters).toEqual([second, first]);
   })
-
-  it('should decrement but never go below zero', () => {
-    component.decrement();
-    expect(component.count).toBe(0);
-
-    component.count = 2;
-    component.decrement();
-    expect(component.count).toBe(1);
-  });
-
-  it('should reset the counter and update the template', () => {
-    component.count = 5;
-    component.reset();
-    fixture.detectChanges();
-
-    const value = fixture.nativeElement.querySelector('.counter-value') as HTMLElement;
-
-    expect(component.count).toBe(0);
-    expect(value.textContent?.trim()).toBe('0');
-  });*/
 });
