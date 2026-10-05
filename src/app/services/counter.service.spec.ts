@@ -59,15 +59,15 @@ describe('CounterService', () => {
     expect(service.counters()).toEqual([]);
   });
 
-  it('should load saved data', () => {
+  it('should load saved data', async () => {
 
   });
 
-  it('should successfully add a new counter', () => {
+  it('should successfully add a new counter', async () => {
 
   });
 
-  it('should remove successfully remove one specified counter', () => {
+  it('should remove successfully remove one specified counter', async () => {
 
   });
 
@@ -75,7 +75,23 @@ describe('CounterService', () => {
 
   });
 
-  it('should not crash when an undefined JSON gets parsed', () => {
-    
+  it('should not crash when an invalid saved JSON gets parsed', async () => {
+
+  });
+
+  it('should cope with invalid JSON', async () => {
+    getMock.mockResolvedValue({
+      value: 'this is not a valid JSON'
+    });
+
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+
+    await service.initialize();
+
+    expect(service.counters()).toEqual([]);
+    expect(service.initialized()).toBe(true);
+
+    expect(errorSpy).toHaveBeenCalledWith('Historii počítadel se nepodařilo načíst.', expect.any(Error));
+    errorSpy.mockRestore();
   })
 });
