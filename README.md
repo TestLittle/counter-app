@@ -36,3 +36,22 @@
 - [X] `npm test -- --watch=false` skončí bez chyby.
 - [X] Příkaz `ionic build` skončí bez chyby.
 - [X] Výsledek je uložený v Git commitu.
+
+## 16. Kontrolní seznam CV4
+
+- [X] Pracuji ve větvi `cv4/preferences`.
+- [X] Projekt obsahuje `@capacitor/preferences` hlavní verze 8.
+- [X] `SavedCounter` obsahuje čas vytvoření `createdAt`.
+- [X] `CounterService` je dostupná přes `providedIn: 'root'`.
+- [X] Stav historie je uložený v signal a ven je vystavený pouze pro čtení.
+- [X] Komponenty nevolají Preferences přímo.
+- [X] Inicializace služby proběhne nejvýše jednou.
+- [X] Záložka Počítadlo ukládá záznam prostřednictvím služby.
+- [X] Záložka Historie zobrazuje všechny uložené záznamy.
+- [X] Lze odstranit jeden záznam i celou historii.
+- [X] Data přežijí obnovení stránky.
+- [ ] `counter.service.spec.ts` obsahuje připravený inicializační test a povinné scénáře 1–4.
+- [ ] Testy používají mock Preferences a nezapisují do skutečného úložiště.
+- [ ] `npm test -- --watch=false` skončí bez chyby.
+- [ ] `npm run lint` a `ionic build` skončí bez chyby.
+- [ ] Výsledek je uložený v Git commitu.
