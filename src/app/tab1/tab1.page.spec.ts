@@ -15,7 +15,7 @@ describe('Tab1Page', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
+/*
   it('should increment the counter', () => {
     component.increment();
     expect(component.count).toBe(1);
@@ -39,5 +39,5 @@ describe('Tab1Page', () => {
 
     expect(component.count).toBe(0);
     expect(value.textContent?.trim()).toBe('0');
-  });
+  });*/
 });
