@@ -17,6 +17,9 @@
   }@else {
     <div class="history-header">
       <p>Počet záznamů: {{ counterService.counters().length }}</p>
+      <p>Počet kladných hodnot: </p>
+      <p>Počet záporných hodnot: </p>
+      <p>Počet nulových hodnot: </p>
       <ion-button color="danger" fill="outline" size="small" (click)="clear()">
         Vymazat vše
       </ion-button>
