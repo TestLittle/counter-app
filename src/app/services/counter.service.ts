@@ -14,9 +14,12 @@ export class CounterService{
 
     readonly counters = this.countersState.asReadonly();
     readonly initialized = this.initializedState.asReadonly();
+
     readonly positiveCount = computed(() => this.countersState().filter((counter) => counter.value > 0).length);
     readonly negativeCount = computed(() => this.countersState().filter((counter) => counter.value < 0).length);
     readonly zeroCount = computed(() => this.countersState().filter((counter) => counter.value === 0).length);
+
+    readonly totalCounterValue = computed(() => this.countersState().reduce((acc, item) => item.value + acc, 0));
 
     initialize(): Promise<void> {
         this.initializationPromise ??= this.load();
