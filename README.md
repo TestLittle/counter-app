@@ -37,6 +37,8 @@
 - [X] Příkaz `ionic build` skončí bez chyby.
 - [X] Výsledek je uložený v Git commitu.
 
+# CV4 – Sdílená služba a lokální perzistence
+
 ## 16. Kontrolní seznam CV4
 
 - [X] Pracuji ve větvi `cv4/preferences`.
