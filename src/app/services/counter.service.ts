@@ -50,7 +50,62 @@ export class CounterService{
             return;
         }
         this.countersState.update((counters) => counters.filter((counter) => counter.name.includes(searchName)));
-        this.persist();
+    }
+
+    async sortNameAsc(): Promise<void>{
+        await this.initialize();
+        this.countersState.update((counters) => counters.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            if(nameA < nameB){
+                return -1;
+            }
+            if(nameA > nameB){
+                return 1;
+            }
+            return 0;
+        }));
+    }
+
+    async sortNameDesc(): Promise<void>{
+        await this.initialize();
+        this.countersState.update((counters) => counters.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            if(nameA < nameB){
+                return 1;
+            }
+            if(nameA > nameB){
+                return -1;
+            }
+            return 0;
+        }));
+    }
+
+    async sortValueAsc(): Promise<void>{
+        await this.initialize();
+        this.countersState.update((counters) => counters.sort((a, b) => {
+            if(a.value < b.value){
+                return -1;
+            }
+            if(a.value > b.value){
+                return 1;
+            }
+            return 0;
+        }));
+    }
+
+    async sortValueDesc(): Promise<void>{
+        await this.initialize();
+        this.countersState.update((counters) => counters.sort((a, b) => {
+            if(a.value < b.value){
+                return 1;
+            }
+            if(a.value > b.value){
+                return -1;
+            }
+            return 0;
+        }));
     }
 
     private async load(): Promise<void>{
