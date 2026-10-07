@@ -20,9 +20,12 @@
       <p>Počet kladných hodnot: {{ counterService.positiveCount() }}</p>
       <p>Počet záporných hodnot: {{ counterService.negativeCount() }}</p>
       <p>Počet nulových hodnot: {{ counterService.zeroCount() }}</p>
-      <ion-button color="danger" fill="outline" size="small" (click)="clear()">
+      <ion-button id="delete-all-alert" color="danger" fill="outline" size="small">
         Vymazat vše
       </ion-button>
+      <ion-alert trigger="delete-all-alert" header="Smazat vše" message="Opravdu chcete smazat vše?" [buttons]="alertButtons">
+        
+      </ion-alert>
     </div>
 
     <ion-list>
