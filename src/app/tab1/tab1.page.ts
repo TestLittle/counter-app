@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { CounterComponent } from '../components/counter/counter.component';
 import { SavedCounter } from '../models/saved-counter';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonListHeader, IonLabel, IonItem, IonNote } from '@ionic/angular';
+import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular';
 import { CounterService } from '../services/counter.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  imports: [CounterComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonListHeader, IonLabel, IonItem, IonNote],
+  imports: [CounterComponent, IonHeader, IonToolbar, IonTitle, IonContent],
 })
 
 export class Tab1Page {
