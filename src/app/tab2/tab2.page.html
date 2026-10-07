@@ -26,8 +26,8 @@
       <ion-alert trigger="delete-all-alert" header="Smazat vše" message="Opravdu chcete smazat vše?" [buttons]="alertButtons"></ion-alert>
     </div>
     <div class="history-header">
-      <input id="search-input" type="text" placeholder="Vyhledat počítadlo...">
-      <ion-button color="success" (click)="search()">Vyhledat</ion-button>
+      <ion-input type="text" placeholder="Vyhledat počítadlo..." [(ngModel)]="searchName"></ion-input>
+      <ion-button color="success">Vyhledat</ion-button>
     </div>
 
     <ion-list>

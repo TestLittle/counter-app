@@ -44,8 +44,13 @@ export class CounterService{
         await Preferences.remove({key: this.storageKey});
     }
 
-    async search(): Promise<void>{
-        
+    async search(searchName: string): Promise<void>{
+        await this.initialize();
+        if(searchName === ''){
+            return;
+        }
+        this.countersState.update((counters) => counters.filter((counter) => counter.name.includes(searchName)));
+        this.persist();
     }
 
     private async load(): Promise<void>{
