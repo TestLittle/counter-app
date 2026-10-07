@@ -21,6 +21,10 @@ export class Tab2Page implements OnInit {
     await this.counterService.remove(id);
   }
 
+  async search(): Promise<void>{
+    await this.counterService.search();
+  }
+
   async clear(): Promise<void>{
     await this.counterService.clear();
   }

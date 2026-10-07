@@ -41,6 +41,10 @@ export class CounterService{
         await Preferences.remove({key: this.storageKey});
     }
 
+    async search(): Promise<void>{
+        
+    }
+
     private async load(): Promise<void>{
         try {
             const { value } = await Preferences.get({key: this.storageKey});

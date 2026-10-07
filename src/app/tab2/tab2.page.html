@@ -25,6 +25,10 @@
       </ion-button>
       <ion-alert trigger="delete-all-alert" header="Smazat vše" message="Opravdu chcete smazat vše?" [buttons]="alertButtons"></ion-alert>
     </div>
+    <div class="history-header">
+      <input id="search-input" type="text" placeholder="Vyhledat počítadlo...">
+      <ion-button color="success" (click)="search()">Vyhledat</ion-button>
+    </div>
 
     <ion-list>
       @for (counter of counterService.counters(); track counter.id){
