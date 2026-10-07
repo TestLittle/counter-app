@@ -23,9 +23,7 @@
       <ion-button id="delete-all-alert" color="danger" fill="outline" size="small">
         Vymazat vše
       </ion-button>
-      <ion-alert trigger="delete-all-alert" header="Smazat vše" message="Opravdu chcete smazat vše?" [buttons]="alertButtons">
-        
-      </ion-alert>
+      <ion-alert trigger="delete-all-alert" header="Smazat vše" message="Opravdu chcete smazat vše?" [buttons]="alertButtons"></ion-alert>
     </div>
 
     <ion-list>
@@ -38,9 +36,10 @@
 
           <ion-note slot="end">{{ counter.value }}</ion-note>
 
-          <ion-button slot="end" color="danger" fill="clear" aria-label="Odstranit záznam" (click)="remove(counter.id)">
+          <ion-button id="delete-counter" slot="end" color="danger" fill="clear" aria-label="Odstranit záznam" (click)="remove(counter.id)">
             Odstranit
           </ion-button>
+          <ion-toast trigger="delete-counter" message="Počítadlo úspěšně smazáno!" [duration]="2000"></ion-toast>
         </ion-item>
       }
     </ion-list>

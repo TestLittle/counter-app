@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { SavedCounter } from '../../models/saved-counter';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonInput } from '@ionic/angular';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonInput, IonToast } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -14,8 +14,9 @@ import { FormsModule } from '@angular/forms';
     IonCardContent,
     IonCardHeader,
     IonCardTitle,
-    IonInput
-  ],
+    IonInput,
+    IonToast
+],
 })
 export class CounterComponent{
   readonly heading = input('Nové počítadlo');
