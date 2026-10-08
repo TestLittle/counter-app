@@ -54,6 +54,6 @@
 - [X] Data přežijí obnovení stránky.
 - [X] `counter.service.spec.ts` obsahuje připravený inicializační test a povinné scénáře 1–4.
 - [X] Testy používají mock Preferences a nezapisují do skutečného úložiště.
-- [ ] `npm test -- --watch=false` skončí bez chyby.
-- [ ] `npm run lint` a `ionic build` skončí bez chyby.
-- [ ] Výsledek je uložený v Git commitu.
+- [X] `npm test -- --watch=false` skončí bez chyby.
+- [X] `npm run lint` a `ionic build` skončí bez chyby.
+- [X] Výsledek je uložený v Git commitu.
