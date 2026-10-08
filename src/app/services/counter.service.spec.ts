@@ -75,6 +75,7 @@ describe('CounterService', () => {
 
     expect(service.counters()).toEqual([second, first]);
     expect(setMock).toHaveBeenCalledWith({key: 'saved-counters', value: JSON.stringify([second, first])});
+    expect(setMock).toHaveBeenCalledTimes(2);
   });
 
   it('should successfully remove one specified counter', async () => {
@@ -96,13 +97,14 @@ describe('CounterService', () => {
 
     expect(service.counters()).toEqual([second, first]);
     expect(setMock).toHaveBeenCalledWith({key: 'saved-counters', value: JSON.stringify([second, first])});
+    expect(setMock).toHaveBeenCalledTimes(2);
 
     await service.clear();
-    expect(removeMock).toHaveBeenCalledWith({key: 'saved-counters'});
-  });
 
-  it('should not crash when an invalid saved JSON gets parsed', async () => {
-    
+    expect(service.counters()).toEqual([]);
+    expect(removeMock).toHaveBeenCalledWith({key: 'saved-counters'});
+    expect(removeMock).toHaveBeenCalledTimes(1);
+    expect(setMock).toHaveBeenCalledTimes(2);
   });
 
   it('should cope with invalid JSON', async () => {
@@ -119,5 +121,23 @@ describe('CounterService', () => {
 
     expect(errorSpy).toHaveBeenCalledWith('Historii počítadel se nepodařilo načíst.', expect.any(Error));
     errorSpy.mockRestore();
-  })
+  });
+
+  it('should cope with correct JSON, but wrong format', async () => {
+    getMock.mockResolvedValue({
+      value: JSON.stringify({name: 'test'})
+    });
+
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+
+    await service.initialize();
+
+    expect(service.counters()).toEqual([]);
+    expect(service.initialized()).toBe(true);
+
+    expect(errorSpy).toHaveBeenCalledWith('Historii počítadel se nepodařilo načíst.', expect.any(Error));
+    errorSpy.mockRestore();
+  });
 });
+
+  
