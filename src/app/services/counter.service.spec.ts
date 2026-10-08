@@ -77,19 +77,32 @@ describe('CounterService', () => {
     expect(setMock).toHaveBeenCalledWith({key: 'saved-counters', value: JSON.stringify([second, first])});
   });
 
-  it('should remove successfully remove one specified counter', async () => {
+  it('should successfully remove one specified counter', async () => {
     await service.add(first);
+    await service.add(second);
 
-    expect(service.counters()).toEqual([first]);
+    expect(service.counters()).toEqual([second, first]);
+    expect(setMock).toHaveBeenCalledWith({key: 'saved-counters', value: JSON.stringify([second, first])});
 
+    await service.remove(first.id);
+
+    expect(service.counters()).toEqual([second]);
+    expect(setMock).toHaveBeenCalledWith({key: 'saved-counters', value: JSON.stringify([second])});
   });
 
-  it('should clear the whole history', () => {
+  it('should clear the whole history', async () => {
+    await service.add(first);
+    await service.add(second);
 
+    expect(service.counters()).toEqual([second, first]);
+    expect(setMock).toHaveBeenCalledWith({key: 'saved-counters', value: JSON.stringify([second, first])});
+
+    await service.clear();
+    expect(removeMock).toHaveBeenCalledWith({key: 'saved-counters'});
   });
 
   it('should not crash when an invalid saved JSON gets parsed', async () => {
-
+    
   });
 
   it('should cope with invalid JSON', async () => {
