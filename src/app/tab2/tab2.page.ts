@@ -31,19 +31,20 @@ export class Tab2Page implements OnInit {
     await this.counterService.clear();
   }
 
-  async sortNameAsc(): Promise<void>{
-    await this.counterService.sortNameAsc();
-  }
-
-  async sortNameDesc(): Promise<void>{
-    await this.counterService.sortNameDesc();
-  }
-
-  async sortValueAsc(): Promise<void>{
-    await this.counterService.sortValueAsc();
-  }
-
-  async sortValueDesc(): Promise<void>{
-    await this.counterService.sortValueDesc();
+  async sort(event: CustomEvent): Promise<void>{
+    switch(event.detail.value){
+      case "name_asc":
+        await this.counterService.sortNameAsc();
+        break;
+      case "name_desc":
+        await this.counterService.sortNameDesc();
+        break;
+      case "value_asc":
+        await this.counterService.sortValueAsc();
+        break;
+      case "value_desc":
+        await this.counterService.sortValueDesc();
+        break;
+    };
   }
 }
