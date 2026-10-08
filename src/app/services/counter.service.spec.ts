@@ -60,22 +60,27 @@ describe('CounterService', () => {
   });
 
   it('should load saved data', async () => {
-    /*getMock.mockResolvedValue({value: JSON.stringify([first, second])});
+    getMock.mockResolvedValue({value: JSON.stringify([first, second])});
 
     await service.initialize();
 
     expect(service.counters()).toEqual([first, second]);
 
-    expect(getMock).toHaveBeenCalledWith({key: 'saved-counters'});*/
+    expect(getMock).toHaveBeenCalledWith({key: 'saved-counters'});
   });
 
   it('should successfully add a new counter', async () => {
-    /*await service.add(first);
+    await service.add(first);
+    await service.add(second);
 
-    expect(setMock).toHaveBeenCalledWith({key: 'saved-counters', value: JSON.stringify([first])});*/
+    expect(service.counters()).toEqual([second, first]);
+    expect(setMock).toHaveBeenCalledWith({key: 'saved-counters', value: JSON.stringify([second, first])});
   });
 
   it('should remove successfully remove one specified counter', async () => {
+    await service.add(first);
+
+    expect(service.counters()).toEqual([first]);
 
   });
 
