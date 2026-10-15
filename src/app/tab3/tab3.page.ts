@@ -1,14 +1,15 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonSpinner, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular';
 import { HolidayApiService } from '../services/holiday-api.service';
 import { PublicHoliday } from '../models/public-holiday';
 import { daysUntil, localDateIso } from '../models/holiday-date';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [DatePipe, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonSpinner, IonSelect, IonSelectOption, IonCard, IonCardHeader, IonCardTitle, IonCardContent],
 })
 export class Tab3Page {
   private readonly holidayApi = inject(HolidayApiService);
