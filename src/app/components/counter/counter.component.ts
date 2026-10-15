@@ -29,9 +29,19 @@ export class CounterComponent{
     this.count++;
   }
 
+  incrementByFive(): void{
+    this.count += 5;
+  }
+
   decrement(): void {
     if(this.count > 0){
       this.count--;
+    }
+  }
+
+  decrementByFive(): void {
+    if(this.count > 4){
+      this.count -= 5;
     }
   }
 

@@ -11,6 +11,15 @@ ion-card{
     text-align: center;
 }
 
+.counter-value-zero {
+    margin: 2rem 0;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    color: red;
+}
+
 .counter-actions {
     display: flex;
     flex-wrap: wrap;

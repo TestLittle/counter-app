@@ -12,8 +12,12 @@
     [(ngModel)]="counterName"
     ></ion-input>
 
-    <p class="counter-value"> {{ count }}</p>
-
+    @if(count === 0){
+      <p class="counter-value-zero"> {{ count }}</p>
+    }@else {
+      <p class="counter-value"> {{ count }}</p>
+    }
+    
     <div class="counter-actions">
       <ion-button color="danger" [disabled]="count === 0" (click)="decrement()">
         -1
@@ -26,6 +30,17 @@
       <ion-button color="medium" fill="outline" [disabled]="count === 0" (click)="reset()">
         Reset
       </ion-button>
+    </div>
+    <div class="counter-actions">
+      <ion-button color="danger" [disabled]="count < 5" (click)="decrementByFive()">
+        -5
+      </ion-button>
+      <ion-button color="primary" (click)="incrementByFive()">
+        +5
+      </ion-button>
+      <ion-input type="text" placeholder="Krok">
+
+      </ion-input>
     </div>
 
     <ion-button id="save-counter" class="save-button" expand="block" color="success" [disabled]="!counterName.trim()" (click)="save()">
