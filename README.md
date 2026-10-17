@@ -57,3 +57,26 @@
 - [X] `npm test -- --watch=false` skončí bez chyby.
 - [X] `npm run lint` a `ionic build` skončí bez chyby.
 - [X] Výsledek je uložený v Git commitu.
+
+# CV5 – REST API a odpočet do svátku
+
+## 18. Kontrolní seznam CV5
+
+- [X] Pracuji ve větvi `cv5/rest-api` navazující na CV4.
+- [X] Mám model `PublicHoliday` a samostatnou `HolidayApiService`.
+- [X] Konfigurace aplikace obsahuje `provideHttpClient()`.
+- [X] Umím vysvětlit metodu GET a parametry země, jazyka a období.
+- [X] Používám `firstValueFrom()` a timeout; vím, že TypeScript typ neověřuje JSON za běhu.
+- [X] Vím, proč je `name` pole a proč jazyk používá kód CS.
+- [X] Třetí záložka nabízí české svátky od dneška do konce příštího roku.
+- [X] Výběr jiného svátku přepočítá odpočet bez dalšího požadavku.
+- [X] Odpočet používá `computed()` a počítá kalendářní dny.
+- [ ] Dnešní svátek zobrazí nulu; minulý se nenabízí.
+- [ ] Svátky se stejným datem rozlišuji pomocí ID.
+- [ ] Aplikace rozlišuje načítání, chybu, prázdný výsledek a data.
+- [ ] Po obnovení připojení lze načtení zopakovat.
+- [ ] Ověřil/a jsem požadavek v Network a vrátil/a testovací změny.
+- [X] Počítadlo a historie z CV4 stále fungují.
+- [X] Na stránce je mé jméno a zdroj dat OpenHolidays s odkazem na licenci.
+- [X] `npm run lint` a `ionic build` proběhnou bez chyby.
+- [X] Řešení je uložené v Git commitu.
