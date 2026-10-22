@@ -80,3 +80,25 @@
 - [X] Na stránce je mé jméno a zdroj dat OpenHolidays s odkazem na licenci.
 - [X] `npm run lint` a `ionic build` proběhnou bez chyby.
 - [X] Řešení je uložené v Git commitu.
+
+# CV6 – První nativní sestavení pro Android
+
+## 18. Kontrolní seznam CV6
+
+- [X] Pracuji ve větvi `cv6/android` navazující na CV5.
+- [X] Mám nainstalované Android SDK Platform 36, potřebné SDK Tools a emulátor nebo fyzické zařízení.
+- [X] `capacitor.config.ts` obsahuje platný `appId`, název `CounterApp` a `webDir: 'www'`.
+- [X] `@capacitor/core`, `@capacitor/cli` a `@capacitor/android` používají verzi 8.5.0.
+- [X] Rozumím rozdílu mezi `ionic build`, `cap sync`, `cap run` a `cap open`.
+- [X] Adresář `android/` vznikl pomocí `npx cap add android` a vím, že `add` neopakuji.
+- [X] Aplikace se sestaví, nainstaluje a spustí na Androidu.
+- [X] Ruční počítadlo i navigace fungují na dotykové obrazovce.
+- [X] Záznam v historii zůstane po zavření a novém spuštění aplikace.
+- [X] OpenHolidays API vrátí data při dostupné síti.
+- [X] Při vypnuté síti se zobrazí chyba a po obnovení lze načtení zopakovat.
+- [X] Ověřil/a jsem aplikaci na výšku i na šířku.
+- [X] Umím najít proces aplikace v Logcatu.
+- [X] Umím otevřít běžící WebView přes `chrome://inspect` a najít HTTP požadavek.
+- [X] V konfiguraci nezůstalo `server.url` ani jiná dočasná změna.
+- [X] `npm run lint`, `ionic build`, `npx cap sync android` a `npx cap doctor android` skončí bez chyby.
+- [X] Nativní projekt je uložený v Git commitu a pracovní strom je čistý.
