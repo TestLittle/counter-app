@@ -71,11 +71,11 @@
 - [X] Třetí záložka nabízí české svátky od dneška do konce příštího roku.
 - [X] Výběr jiného svátku přepočítá odpočet bez dalšího požadavku.
 - [X] Odpočet používá `computed()` a počítá kalendářní dny.
-- [ ] Dnešní svátek zobrazí nulu; minulý se nenabízí.
-- [ ] Svátky se stejným datem rozlišuji pomocí ID.
-- [ ] Aplikace rozlišuje načítání, chybu, prázdný výsledek a data.
-- [ ] Po obnovení připojení lze načtení zopakovat.
-- [ ] Ověřil/a jsem požadavek v Network a vrátil/a testovací změny.
+- [X] Dnešní svátek zobrazí nulu; minulý se nenabízí.
+- [X] Svátky se stejným datem rozlišuji pomocí ID.
+- [X] Aplikace rozlišuje načítání, chybu, prázdný výsledek a data.
+- [X] Po obnovení připojení lze načtení zopakovat.
+- [X] Ověřil/a jsem požadavek v Network a vrátil/a testovací změny.
 - [X] Počítadlo a historie z CV4 stále fungují.
 - [X] Na stránce je mé jméno a zdroj dat OpenHolidays s odkazem na licenci.
 - [X] `npm run lint` a `ionic build` proběhnou bez chyby.
