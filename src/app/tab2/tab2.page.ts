@@ -1,8 +1,9 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonSpinner, IonItem, IonLabel, IonNote, IonList, IonAlert, IonToast, IonInput, IonSelect, IonSelectOption } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
 import { CounterService } from '../services/counter.service';
 import { FormsModule } from '@angular/forms';
+import { FirebaseAuthService } from '../services/firebase-auth.service';
 
 @Component({
   selector: 'app-tab2',
@@ -14,9 +15,18 @@ export class Tab2Page implements OnInit {
   readonly counterService = inject(CounterService);
   searchName = '';
   public alertButtons = [{text:'Zrušit', role:'cancel', handler: () => {},},{text:'Potvrdit', role:'confirm', handler: () => this.clear()}];
+  readonly auth = inject(FirebaseAuthService);
+  readonly authError = signal('');
 
   async ngOnInit(): Promise<void>{
     await this.counterService.initialize();
+
+    try{
+      await this.auth.initialize();
+    }catch(error){
+      console.error(error);
+      this.authError.set('Přihlášení se nezdařilo. Zkontrolujte konfiguraci.');
+    }
   }
 
   async remove(id: string): Promise<void>{
