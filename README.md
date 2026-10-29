@@ -102,3 +102,24 @@
 - [X] V konfiguraci nezůstalo `server.url` ani jiná dočasná změna.
 - [X] `npm run lint`, `ionic build`, `npx cap sync android` a `npx cap doctor android` skončí bez chyby.
 - [X] Nativní projekt je uložený v Git commitu a pracovní strom je čistý.
+
+# CV7 – Firebase a identita uživatele
+
+## 8. Dokončení
+
+```bash
+npm run lint
+ionic build
+git diff --check
+git add package.json package-lock.json src
+git commit -m "CV7: pripojeni Firebase a anonymni identita"
+```
+
+Před commitem zkontrolujte vlastní `git diff`.
+
+- [ ] Lokální historie stále funguje.
+- [ ] UID odpovídá účtu ve Firebase Console.
+- [ ] Obnovení stránky zachová UID; soukromé okno má jiné.
+- [ ] Umím vysvětlit rozdíl mezi konfigurací projektu a oprávněním k datům.
+- [ ] Umím vysvětlit, proč sdílíme `signInPromise`.
+- [X] Lint a sestavení prošly.
