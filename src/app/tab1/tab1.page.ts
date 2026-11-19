@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CounterComponent } from '../components/counter/counter.component';
 import { SavedCounter } from '../models/saved-counter';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular';
-import { CounterService } from '../services/counter.service';
+import { FirebaseCounterService } from '../services/firebase-counter.service';
 
 @Component({
   selector: 'app-tab1',
@@ -12,7 +12,7 @@ import { CounterService } from '../services/counter.service';
 })
 
 export class Tab1Page {
-  private readonly counterService = inject(CounterService);
+  private readonly counterService = inject(FirebaseCounterService);
 
   async onSaved(counter: SavedCounter):Promise<void>{
     await this.counterService.add(counter);

@@ -117,9 +117,29 @@ git commit -m "CV7: pripojeni Firebase a anonymni identita"
 
 Před commitem zkontrolujte vlastní `git diff`.
 
-- [ ] Lokální historie stále funguje.
-- [ ] UID odpovídá účtu ve Firebase Console.
-- [ ] Obnovení stránky zachová UID; soukromé okno má jiné.
-- [ ] Umím vysvětlit rozdíl mezi konfigurací projektu a oprávněním k datům.
-- [ ] Umím vysvětlit, proč sdílíme `signInPromise`.
+- [X] Lokální historie stále funguje.
+- [X] UID odpovídá účtu ve Firebase Console.
+- [X] Obnovení stránky zachová UID; soukromé okno má jiné.
+- [X] Umím vysvětlit rozdíl mezi konfigurací projektu a oprávněním k datům.
+- [X] Umím vysvětlit, proč sdílíme `signInPromise`.
 - [X] Lint a sestavení prošly.
+
+# CV8 – Cloudová historie krok za krokem
+
+## 8. Dokončení a odevzdání
+
+```bash
+npm run lint
+ionic build
+git diff --check
+git diff
+```
+
+- [X] Přidání a odstranění funguje i po obnovení stránky.
+- [X] Dvě karty se stejným UID sdílejí změny bez obnovení.
+- [X] Soukromé okno má jiné UID a vlastní data.
+- [X] Přístup k cizímu UID server odmítl; testovací změna je vrácená.
+- [ ] V metodách nezůstalo volání odstraněného `load()` ani import `getDocs`.
+- [X] Lokální `CounterService` zůstal v projektu pro porovnání.
+- [X] Soubor `firestore.rules` odpovídá publikovaným pravidlům.
+- [ ] Lint a sestavení prošly.
