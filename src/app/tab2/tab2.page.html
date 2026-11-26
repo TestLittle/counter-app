@@ -3,18 +3,23 @@
     <ion-title>
       Historie
     </ion-title>
+    <ion-button slot="end" fill="clear" [disabled]="signingOut()" (click)="logout()">
+      Odhlásit se
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
+  @if(auth.user(); as user){
+    <p class="state-message">Účet {{ user.email || user.displayName || user.uid }}</p>
+  }
+
+  @if(logoutError()){
+    <p class="state-message" role="alert">{{ logoutError() }}</p>
+  }
   @if (counterService.errorMessage()){
     <p class="state-message">{{ counterService.errorMessage() }}</p>
   }
-
-  @if(auth.userId(); as uid){
-    <p class="state-message">Anonymní uživatel: {{ uid }}</p>
-  }
-
   @if(!counterService.initialized()){
     <div class="state-message">
       <ion-spinner></ion-spinner>
@@ -28,12 +33,12 @@
       <ion-button id="delete-all-alert" color="danger" fill="outline" size="small">
         Vymazat vše
       </ion-button>
-      <ion-alert trigger="delete-all-alert" header="Smazat vše" message="Opravdu chcete smazat vše?" [buttons]="alertButtons"></ion-alert>
+      <ion-alert trigger="delete-all-alert" header="Smazat vše" message="Opravdu chcete smazat vše?"></ion-alert>
     </div>
     <div class="history-header">
-      <p>Počet kladných hodnot: {{ counterService.positiveCount() }}</p>
-      <p>Počet záporných hodnot: {{ counterService.negativeCount() }}</p>
-      <p>Počet nulových hodnot: {{ counterService.zeroCount() }}</p>
+      <p>Počet kladných hodnot: </p>
+      <p>Počet záporných hodnot: </p>
+      <p>Počet nulových hodnot: </p>
     </div>
     <div class="history-header">
       <ion-input type="text" placeholder="Vyhledat počítadlo..." [(ngModel)]="searchName"></ion-input>
@@ -66,7 +71,7 @@
       }
     </ion-list>
     <div class="history-header">
-      <p>Součet všech hodnot počítadel: {{ counterService.totalCounterValue() }}</p>
+      <p>Součet všech hodnot počítadel: </p>
     </div>
   }
 </ion-content>

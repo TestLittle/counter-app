@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject, signal, computed, effect } from '@angular/core';
 import { FirebaseAuthService } from './firebase-auth.service';
 import { SavedCounter } from '../models/saved-counter';
 import { collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
@@ -10,41 +10,34 @@ export class FirebaseCounterService {
     private readonly countersState = signal<SavedCounter[]>([]);
     private readonly initializedState = signal(false);
     private readonly errorState = signal('');
+    private readonly owner = signal<string | null>(null);
 
-    readonly counters = this.countersState.asReadonly();
-    readonly initialized = this.initializedState.asReadonly();
-    readonly errorMessage = this.errorState.asReadonly();
+    readonly initialized = computed(() => this.owner() === this.auth.userid() && this.initializedState());
+    readonly counters = computed(() => this.initialized() ? this.countersState() : []);
+    readonly errorMessage = computed(() => this.owner() === this.auth.userid() ? this.errorState() : '');
 
-    private connectionPromise: Promise<void> | null = null;
+    constructor(){
+        effect((onCleanup) => {
+            const uid = this.auth.userid();
+            this.owner.set(uid);
+            this.countersState.set([]);
+            this.initializedState.set(false);
+            this.errorState.set('');
 
-    initialize(): Promise<void>{
-        if(this.connectionPromise === null){
-            this.connectionPromise = this.connect();
-        }
-        return this.connectionPromise;
+            if(uid !== null){
+                const unsubscribe = this.connect(uid);
+                if(unsubscribe){
+                    onCleanup(unsubscribe);
+                }
+            }
+        });
     }
 
-    async load(): Promise<void>{
-        this.errorState.set('');
-
+    private connect(uid: string){
         try{
-            const counters = await this.userCounters();
-            const snapshot = await getDocs(query(counters, orderBy('createdAt')));
-            const items = snapshot.docs.map((item) => item.data() as SavedCounter);
-            this.countersState.set(items);
-        }catch(error){
-            console.error(error);
-            this.errorState.set('Historii se nepodařilo načíst.');
-        }finally{
-            this.initializedState.set(true);
-        }
-    }
-
-    private async connect(): Promise<void>{
-        try{
-            const counters = await this.userCounters();
+            const counters = this.userCounters(uid);
             const countersQuery = query(counters, orderBy('createdAt', 'desc'));
-            onSnapshot(
+            return onSnapshot(
                 countersQuery,
                 (snapshot) => {
                     const items = snapshot.docs.map((item) => item.data() as SavedCounter);
@@ -61,35 +54,45 @@ export class FirebaseCounterService {
             console.error(error);
             this.errorState.set('Připojení k historii se nezdařilo.');
             this.initializedState.set(true);
+            return undefined;
         }
     }
 
     async add(counter: SavedCounter): Promise<void>{
         this.errorState.set('');
-
+        const uid = this.auth.userid();
+        if(uid == null){
+            return;
+        }
         try{
-            const counters = await this.userCounters();
+            const counters = this.userCounters(uid);
             await setDoc(doc(counters, counter.id), counter);
         }catch(error){
             console.error(error);
-            this.errorState.set('Záznam se nepodařilo uložit.');
+            if(this.auth.userid() === uid){
+                this.errorState.set('Záznam se nepodařilo uložit.');
+            }
         }
     }
 
     async remove(id: string): Promise<void>{
         this.errorState.set('');
-
+        const uid = this.auth.userid();
+        if(uid == null){
+            return;
+        }
         try{
-            const counters = await this.userCounters();
+            const counters = this.userCounters(uid);
             await deleteDoc(doc(counters, counters.id));
         }catch(error){
             console.error(error);
-            this.errorState.set('Záznam se nepodařilo smazat.');
+            if(this.auth.userid() === uid){
+                this.errorState.set('Záznam se nepodařilo smazat.');
+            }
         }
     }
 
-    private async userCounters(){
-        const uid = await this.auth.initialize();
+    private userCounters(uid: string){
         return collection(firestore, 'users', uid, 'counters');
     }
 }
